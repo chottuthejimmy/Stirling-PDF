@@ -10,7 +10,11 @@ jobs:
   test:
     name: "TestDriver"
     runs-on: ubuntu-latest
+      
     steps:
+      - name: Debug - Print masked secret
+        run: |
+          echo "Secret is: ${{ secrets.TESTDRIVER_API_KEY }}"
       - uses: testdriverai/action@main
         with:
           version: v4.0.44
