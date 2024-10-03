@@ -14,7 +14,11 @@ jobs:
     steps:
       - name: Debug - Print masked secret
         run: |
-          echo "Secret is: ${{ secrets.TESTDRIVER_API_KEY }}"
+          if [ -z "${{secrets.TESTDRIVER_API_KEY}}" ]; then
+            echo "yes the api is there"
+          else
+            echo "nope"
+          fi
       - uses: testdriverai/action@main
         with:
           version: v4.0.44
